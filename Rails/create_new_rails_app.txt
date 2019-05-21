@@ -1,0 +1,70 @@
+Creating a New Rails Project
+
+* Note: anything within `..` are command line commands
+
+0. Install Rails
+    `gem install rails`
+    `rails --version`
+
+1. At the command prompt, create a new Rails application:
+    `rails new myapp` (where "myapp" is the application name)
+
+2. Change directory to myapp and start the web server:
+    `cd myapp`
+    `rails server`
+
+3. Go to localhost:3000/ and you'll see the "Yay! You're on Rails" landing page
+
+4. Configuring a Database (some of these commands might not be necessary, you'll
+    have to see what your specific needs are)
+
+    `gem install sqlite3`
+    `bundle install`
+    `rake db:create`
+    `rails server`
+
+--> To stop the server, hit Ctrl+C in the terminal window where it's running.
+
+5. To get Rails saying "Hello", you need to create at minimum a controller and
+    a view. It's a single command:
+
+    `rails generate controller home index`
+
+--> If you get a command not found error when running this command, you need to
+    explicitly pass Rails rails commands to Ruby:
+
+    `ruby \path\to\your\application\script\rails generate controller home index`
+
+--> Rails will create several files for you, including
+    app/views/home/index.html.erb.
+    This is the template that will be used to display the results of the index
+    action (method) in the home controller.
+--> Open this file in your text editor and edit it to contain a single line:
+    <h1>Hello, Rails!</h1>
+
+6. Setting the Application Home Page
+
+    `rm public/index.html` (if it's there)
+
+--> We need to do this as Rails will deliver any static file in the public
+    directory in preference to any dynamic content we generate from the
+    controllers.
+--> Now you have to tell Rails where your actual home page is located.
+--> Open the config/routes.rb in your editor.
+--> Add / uncomment the line:
+
+    root :to => "home#index"
+
+7. Creating a Resource
+--> In the case of a blog application, for example, you can start by generating
+    a scaffold for the Post resource: this will represent a single blog post.
+
+    `rails generate scaffold Post name:string title:string content:text`
+
+--> While scaffolding will get you up and running quickly, the code it
+    generates is unlikely to be a perfect fit for your application.
+--> You'll most probably want to customize the generated code.
+--> Many experienced Rails developers avoid scaffolding altogether, preferring
+    to write all of their source code from scratch.
+--> Rails, however, makes it really simple to customize templates for generated
+    models, controllers, views, and other source files.

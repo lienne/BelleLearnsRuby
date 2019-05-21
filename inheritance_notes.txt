@@ -1,0 +1,151 @@
+Inheritance
+
+--> Most of the uses of inheritance can be simplified or replaced with
+    Composition.
+
+--> Inheritance is used to indicate that one class will get most or all of
+    its features from a parent class. This happens implicitly whenever you
+    write `class Foo < bar`, which says "Make a class Foo that inherits from Bar".
+--> When you do this, the language makes any action that you do on instances
+    of Foo also work as if they were done to an instance of Bar.
+--> Doing this lets you put common functionality in the Bar class, then
+    specialize that functionality in the Foo class as needed.
+
+--> When you are doing this kind of specialization, there are three ways that
+    the parent and child classes can interact:
+
+    1. Actions on the child imply an action on the parent.
+
+    2. Actions on the child override the action on the parent.
+
+    3. Actions on the child alter the action on the parent.
+
+
+
+Implicit Inheritance
+
+--> Implicit actions that happen when you define a function in the parent
+    but not in the child:
+
+```
+class Parent
+    def implicit()
+        puts "PARENT implicit()"
+    end
+end
+
+class Child < Parent
+end
+
+dad = Parent.new()
+son = Child.new()
+
+dad.implicit()
+son.implicit()
+```
+
+--> The class Child is an empty class that inherits all of its behavior from
+    Parent.
+--> This shows that if you put functions in a base class (i.e. Parent), then all
+    subclasses (i.e. Child) will automatically get those features.\
+--> Very handy for repetitive code you need in many classes.
+
+
+Override Explicitly
+
+--> The problem with having functions called implicitly is that sometimes
+    you want the child to behave differently.
+--> In this case you want to override the function in the child, effectively
+    replacing the functionality.
+--> To do this just define a function with the same name in Child.
+
+```
+class Parent
+    def override()
+        puts "PARENT override()"
+    end
+end
+
+class Child < Parent
+    def override()
+        puts "CHILD override()"
+    end
+end
+
+dad = Parent.new()
+son = Child.new()
+
+dad.override()
+son.override()
+```
+
+
+Alter Before or After
+
+--> The third way to use inheritance is a special case of overriding where
+    you want to alter the behavior before or after the Parent class' version
+    runs.
+--> You first override the function just like in the last example, but then
+    you use a Ruby built-in function named `super` to get the Parent version
+    to call.
+
+```
+class Parent
+    def altered()
+        puts "PARENT altered()"
+    end
+end
+
+class Child
+    def altered()
+        puts "CHILD, BEFORE PARENT altered()"
+        super()
+        puts "CHILD, AFTER PARENT altered()"
+    end
+end
+
+dad = Parent.new()
+son = Child.new()
+
+dad.altered()
+son.altered()
+```
+
+
+Using super() with initialize
+
+--> The most common use of super() is actually in initialize functions in
+    base classes.
+--> This is usually the only place where you need to do some things in a
+    child, then complete the initialization in the parent.
+
+```
+class Child < Parent
+    def initialize(stuff)
+        @stuff = stuff
+        super()
+    end
+end
+```
+
+--> This is the same as the Child.altered example above, except I'm setting
+    some varuiables in the initialize before having the Parent initialize
+    with its Parent.initialize.
+
+
+Composition
+
+--> Inheritance is useful, but another way to do the exact same thing is
+    just to use other classes and modules, rather than rely on implicit
+    inheritance.
+--> If you look at the three ways to exploit  inheritance, two of the three
+    involve writing new code to replace or alter functionality.
+--> This can easily be replicated by just calling functions in a module.
+--> Look at other_class.rb
+
+
+--> Ruby has another way to do composition using modules and a concept
+    called mixins.
+--> You simply create a module with functions that are common to classes
+    and then include them in your class similar to using a `require`.
+--> Look at other_module.rb

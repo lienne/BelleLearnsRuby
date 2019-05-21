@@ -1,0 +1,153 @@
+Modules
+
+--> Modules are like Hashes
+--> Idea of Hashes: "get X from Y"
+--> If you make a Ruby file with some functions or variables in it, inside
+    a module .. end block
+--> You can import that file and access the functions or variables in that
+    module with the dot . operator
+
+--> Imagine you have a module named mystuff.rb with a function called apple:
+
+module MyStuff
+    def MyStuff.apple()
+        puts "I AM APPLES!"
+    end
+end
+
+--> You can use the module MyStuff with require and then access the apple function:
+
+require "./mystuff.rb"
+MyStuff.apple()
+
+--> You can also put a variable in:
+
+module MyStuff
+    def MyStuff.apple()
+        puts "I AM APPLES!"
+    end
+
+    # this is just a variable
+    TANGERINE = "Living reflection of a dream"
+end
+
+--> You can access it the same way:
+
+require "./mystuff.rb"
+MyStuff.apple()
+puts MyStuff::TANGERINE
+
+--> Refer back to the hash, and you should start to see how this is similar
+    to using a hash, but with different syntax:
+
+mystuff['apple'] # get apple from dictionary
+MyStuff.apple() # get apple from the module
+MyStuff::TANGERINE # same thing, it's just a variable
+
+--> In the case of the has, the key is a string and the syntax is [key]
+--> In the case of the module, the key is an identifier, and the syntax is .key
+
+Classes
+
+--> Classes are like Modules
+--> You can think about a module as a specialized hash that can store Ruby
+    code so you can access it with the . dot operator.
+--> A class is a way to take a grouping of functions and date and place them
+    inside a container so you can access them with the . dot operator.
+--> Ex.:
+
+class MyStuff
+    def initialize()
+        @tangerine = "And now a thousand years between"
+    end
+
+    attr_reader : tangerine
+
+    def apple()
+        puts "I AM CLASSY APPLES!"
+    end
+end
+
+Objects
+
+--> Objects are like Require
+--> If a class is like a "mini-module", then there has to be a concept similar
+    to require but for classes.
+--> That concept is called "instantiate", which means "create".
+--> When you instantiate a class what you get is called an object.
+--> You instantiate a class by calling the class' new function, like this:
+
+thing = MyStuff.new()
+thing.apple()
+puts thing.tangerine
+
+--> Syntax notes:
+--> $ means global variable
+--> @ means "this object"
+
+--> The process of creating an instance of a class is not giving you the
+    class, but instead is using the class as a blueprint for building a copy
+    of that type of thing.
+
+--> Classes are like blueprints or definitions for creating new mini-modules.
+--> Instantiation is how you make one of these mini-modules and require it at
+    the same thing. Here "instantiate" just means create an object from the class.
+--> The result is called an object. and you then assign it to a variable to
+    work with it.
+
+--> At this point objects behave differently from modules.
+
+--> Now you have three ways to get things from things:
+
+# dict style
+mystuff['apples']
+
+# module style
+MyStuff.apples()
+puts MyStuff::TANGERINE
+
+# class style
+thing = MyStuff.new()
+thing.apples()
+puts thing.tangerine
+
+
+Word Drills
+
+--> class : Tell Ruby to make a new type of thing.
+--> object : Two meanings: the most basic type of thing, and any instance of
+    some thing.
+--> instance : What you get when you tell Ruby to create a class.
+--> def : How you define a function inside a class
+--> @ : Inside the functions in a class, @ is a variable for the
+    instance / object being accessed
+--> inheritance : The concept that one class can inherit traits from another
+    class, much like your parents.
+--> composition : The concept that a class can be composed of other classes as
+    parts, much like how a car has wheels.
+--> attribute : A property classes have that are from composition and are
+    usually variables.
+--> is-a : A phrase to say that something inherits from another, as in a
+    "salmon" is-a "fish"
+--> has-a : A phrase to say that something is composed of other things or
+    has a trait, as in "a salmon has-a mouth"
+
+Phrase Drills
+
+class X < y
+    "Make a class named X that is-a Y."
+
+class X: def initialize(J)
+    "class X has-a initialize that takes a J parameter"
+
+class X: def M(J)
+    "class X has-a function named M that takes a J parameter"
+
+foo = X.new()
+    "Set food to an instance of class X"
+
+foo.M(J)
+    "From foo, get the M function, and call it with parameter J"
+
+foo.K = Q
+    "From foo, get the K attribute, and set it to Q"

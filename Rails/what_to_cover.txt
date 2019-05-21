@@ -1,0 +1,26 @@
+Ruby on Rails Guide
+
+Cover:
+
+1. Getting Started with Rails
+2. Controllers
+3. Action Controller Overview (IMPORTANT)
+4. Rails Routing from the Outside In (MOST IMPORTANT)
+5. Views
+6. Layouts and Rendering in Rails (Important - we use ERB and JBUILDER a lot)
+7. Action View Form Helpers (less important)
+8. Digging Deeper
+9. Active Support Core Extensions (relevant)
+10. Rails Internationalization API (relevant)
+
+
+Other Articles
+
+1. Testing Rails Applications (relevant RSPEC, which is different)
+2. Securing Rails Applications
+3. Debugging Rails Applications
+4. Configuring Rails Applications (less important)
+5. Rails Command Line Tools and Rake Tasks
+6. Caching with Rails
+7. Asset Pipeline
+8. Rails on Rack

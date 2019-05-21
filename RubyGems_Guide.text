@@ -1,0 +1,36 @@
+Basics
+
+--> RubyGems is a sophisticated package manager for Ruby.
+--> The RubyGems software allows you to easily download, install, and use ruby
+    software packages on your system.
+--> The software package is called a "gem" which contains a packaged Ruby
+    application or library.
+
+--> Gems can be used to extend or modify functionality in Ruby applications.
+--> Commonly they're used to distribute reusable functionality that is shared
+    with other Rubyists for use in their applications and libraries.
+--> Some gems provide command line utilities to help automate tasks and speed
+    up your work.
+
+
+Commands
+
+--> The `gem` command allows you to interact with RubyGems.
+--> The `search` command lets you find remote gems by name.
+    You can also use regex in your query.
+--> The `install` command downloads and installs the gem and any necessary
+    dependencies then builds documentation for the installed gems.
+    * You can disable documentation generation using `--no-doc` arg.
+--> The `list` command shows your locally installed gems.
+--> The `uninstall` command removes the gems you have installed.
+--> You can view the documentation for your installed gems with `ri`.
+--> You can view the documentation for your installed gems in your browser
+    with the `server` command.
+    You can access this documentation at http://localhost:8080
+
+Requiring Code
+
+--> RubyGems modifies you+r local Ruby load path, which controls how your
+    Ruby code is found by the `require` statement.
+--> When you `require` a gem, really you're just placing that gem's lib
+    directory onto your $LOAD_PATH.

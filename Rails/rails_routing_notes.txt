@@ -1,0 +1,27 @@
+Objectives:
+
+- Cover the user-facing features of Rails routing
+- Understand the code in routes.rb
+- Construct your own routes, using either the preferred resourceful style
+  or the `match` method
+- Identify what parameters to expect an action to receive
+- Automatically create paths and URLs using route helpers
+- Use advanced techniques such as constraints and Rack endpoints
+
+1. What are Rails routes?
+    - The router is the doorman of your application.
+    - When an HTTP request arrives from the user's browser, it needs to know
+      which controller action (method) should be run.
+    - The router is basically just a matching service. It looks at the HTTP
+      verb (GET, POST, PUT, DELETE), and the URL that is being requested
+      and matches it with the appropriate controller action to run.
+    - Browsers request pages from Rails by making a request for a URL using
+      a specific HTTP method, such as GET, POST, PUT and DELETE.
+    - Each method is a request to perform an operation on the resource.
+    - A resource route maps a number of related requests to actions in a single
+      controller.
+
+2. The Purpose of the Rails Router
+    - The Rails router recognizes URLs and dispatches them to a controller's
+      action. It can also generate paths and URLs, avoiding the need to
+      hardcode strings in your views.

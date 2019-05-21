@@ -1,0 +1,116 @@
+This will cover:
+
+- Installing Rails, creating a new Rails application, and connecting your
+    application to a database.
+- The general layout of a Rails application.
+- Basic principles of MVC (Model, View, Controller) and RESTful design
+- How to quickly generate the starting pieces of a Rails application
+
+
+What is Rails?
+
+--> Rails is a web application development framework written in the Ruby language.
+
+Rails Philosophy
+
+ * DRY - Don't Repeat Yourself
+ * Convention Over Configuration - Means Rails makes assumptions about what
+    you want to do and how you're going to do it, rather than requiring you
+    to specify every little thing through endless config files.
+ * REST is the best pattern for web applications - organizing your application
+    around resources and standard HTTP verbs is the fastest way to go.
+
+
+The MVC Architecture
+
+--> At the core of rails is the Model, View, Controller architecture (MVC).
+--> Benefits include:
+    * Isolation of business logic from the user interface
+    * Ease of keeping code DRY
+    * Making it clear where different types of code belong for easier maintenance.
+
+Models
+--> A model represents the information (data) of the application and the rules
+    to manipulate that data.
+--> In the case of Rails, models are primarily used for managing the rules of
+    interaction with a corresponding database table.
+--> In most cases, each table in your database will correspond to one model
+    in your application.
+--> The bulk of your application's business logic will be concentrated in
+    the models.
+
+Views
+--> Views represent the user interface of your application.
+--> In Rails, views are often HTML files with embedded Ruby code that perform
+    tasks related solely to the presentation of the data.
+--> Views handle the job of providing data to the web browser or other tool
+    that is used to make requests from your application.
+
+Controllers
+--> Controllers provide the "glue" between models and views.
+--> In Rails, controllers are responsible for processing the incoming requests
+    from the web browser, interrogating the models for data, and passing
+    that data on to the views for presentation.
+
+
+** We don't use Active Record at SightPlan **
+
+
+The Components of Rails
+
+Action Pack
+--> Action Pack is a single gem that contains Action Controller, Action View,
+    and Action Dispatch. The "VC" part of "MVC".
+
+Action Controller
+--> The component that manages the controllers in a Rails application.
+--> The Action Controller framework processes incoming requests to a Rails
+    application, extracts parameters, and dispatches them to the intended
+    action.
+--> Services provided by Action Controller include session management,
+    template rendering, and redirect management.
+
+Action View
+--> Action View manages the views of your Rails application.
+--> It can create both HTML and XML output by default.
+--> Action View manages rendering templates, including nested and partial
+    templates, and includes built-in AJAX support.
+
+    ** Side Note: AJAX **
+    -- Asynchronous JavaScript And XML
+    -- AJAX is not a programming language.
+    -- AJAX is a technique for accessing web servers from a web page.
+    -- It is a combination of:
+        . A browser built-in XMLHttpRequest object (to request data from a web server)
+        . JavaScript and HTML DOM (to display or use the data)
+        . AJAX allows web pages to be updated asynchronously by exchanging data
+          with a web server behind the scenes. This means that is it possible
+          to update parts of a web page, without reloading the whole page.
+        https://www.w3schools.com/whatis/whatis_ajax.asp
+
+Action Dispatch
+--> Action Dispatch handles routing of web requests and dispatches them as
+    you want, either to your application or any  other Rack application.
+    (Rack applications are a more advanced topic).
+
+Active Support
+--> Active Support is an extensive collection of utility classes and standard
+    Ruby library extensions that are used in Rails, both by the core code
+    and by your applications.
+
+Railties
+--> Railties is the core Rails code that builds new Rails applications and glues
+    the various frameworks and plugins together in any Rails applications.
+
+
+REST
+
+--> Representational State Transfer
+--> REST in terms of Rails boils down to two main principles:
+    * Using resource identifiers such as URLs to represent resources
+    * Transferring representations of the state of that resource between
+      system components.
+--> Look at REST_notes.txt for a more in-depth explanation of REST
+
+
+** For how to create a new Rails application, look at create_new_rails_app.txt**

@@ -1,0 +1,49 @@
+Hashes
+
+--> Arrays use number (integers) to index the elements in it.
+--> Hashes let you use (almost) anything, not just numbers, as your index.
+--> Which means it associates one thing to another (key-value pairings - mapping)
+
+Sample hash code in Ruby:
+
+stuff = {'name' => 'Zed', 'age' => 39, 'height' => 6 * 12 + 2}
+puts stuff['name']
+// prints Zed
+puts stuff['age']
+// prints 39
+puts stuff['height']
+// prints 74
+stuff['city'] = "San Francisco"
+print stuff['city']
+// prints San Francisco
+
+--> We can also put new things into the hash with strings.
+--> You aren't limited to strings for keys and values.
+--> We can also do this:
+
+stuff[1] = "Wow"
+stuff[2] = "Neato"
+puts stuff[1]
+// prints Wow
+puts stuff[2]
+// prints Neato
+stuff
+// prints:
+// {"name"=>"Zed", "age"=>39, "height"=>74, "city"=>"San Francisco", 1=>"Wow", 2=>"Neato"}
+
+--> Here's how you delete things:
+
+stuff.delete('city')
+stuff.delete(1)
+stuff.delete(2)
+stuff
+// prints:
+// {"name"=>"Zed", "age"=>39, "height"=>74}
+
+
+--> You can map to maps, such as in hashing.rb
+--> You can default values using ||= with the nil result
+--> Ex.:
+
+city = cities['TX']
+city ||= 'Does Not Exist'

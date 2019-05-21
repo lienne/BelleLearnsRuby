@@ -1,0 +1,118 @@
+Key REST Principles
+
+--> REST is a set of principles that define how Web standards, such as HTTP and
+    URIs, are supposed to be used.
+--> Five Key Principles:
+    1. Give every "thing"/resource an ID
+    2. Link things together
+    3. Use standard methods
+    4. Resources with multiple representations
+    5. Communicate statelessly
+
+1:  Give every "thing"/resource an ID
+    - If you think about the systems that people build, there is usually a set of
+      key abstractions that merit being identified.
+    - Everything that should be identifiable should get an ID - on the web, there
+      is a unified concept for IDs: The URI (Uniform Source Identifier).
+    - URIs make up a global namespace, and using URIs to identify your key
+      resources  means they get a unique, global ID.
+    - Note that the benefits of having a single, globally unified naming scheme
+      apply both to the usage of the Web in your browser and to machine-to-machine
+      communication.
+    - To summarize: Use URIs to identify everything that merits being identifiable,
+      specifically, all of the "high level" resources that your app provides,
+      whether they represent individual items, collections of items, virtual
+      and physical objects, or computation results.
+
+2:  Link things together
+    - "Hypermedia as the engine of application state" - HATEOAS
+    - Hypermedia: the idea of links
+    - The beauty of link approach using URIs is that the links can point to
+      resources that are provided by a different application, a different
+      server, or even a different company on another continent -- because
+      the name scheme is a global standard, all of the resources that make up
+      the Web can be linked to each other.
+    - There is an even more important aspect to the hypermedia principle - the
+      "state" part of the application.
+    - The fact that the server (or server provider) provides a set of links to
+       the client (the service consumer) enables the client to move the
+       application from one state to the next by following a link.
+    - Keep in mind that links are an extremely useful way to make an application
+      dynamic.
+    - To summarize: Use links to refer to identifiable things (resources)
+      wherever possible. Hyperlinks is what makes the Web the Web.
+
+3:  Use standard methods
+    - Imagine you see a URI written on the side of a bus; you can enter it
+      into  your browser's address field and hit return - but how does your
+      browser know what to do with the URI?
+    - It knows what to do with it because every resource supports the same
+      interface, the same set of methods (operations).
+    - HTTP calls these verbs, and in addition to the two everyone knows
+      (GET and POST), the set of standard methods includes PUT, DELETE, HEAD,
+      and OPTIONS.
+    - The meaning of these methods is defined in the HTTP specification, along
+      with some guarantees about their behavior.
+    - To summarize: For clients to be able to interact with your resources,
+     they should implement the default application protocol (HTTP) correctly,
+     i.e. make use of the standard methods GET, PUT, POST, DELETE.
+
+4: Resources with multiple representations
+    - How does a client know how to deal with the data it retrieves, as a
+      result of a GET or POST request?
+    - The approach taken by HTTP is to allow for a separation of concerns
+      between handling the data and invoking operations.
+    - In other words, a client that knows how to handle a particular data
+      format can interact with all resources that can provide a representation
+      in this format.
+    - Ideally, the representations of a resource should be in standard formats -
+      if a client "knows" both the HTTP application protocol and a set of
+      data formats, it can interact with any RESTful HTTP application in the
+      world in a very meaningful way.
+    - There is another significant benefit of having multiple representations
+      of a resource in practice: If you provide both an HTML and an XML
+      representation of your resources, they are consumable not only by your
+      application, but also by every standard Web browser.
+    - In other words, information in your application becomes available to
+      everyone who knows how to use the Web.
+    - There is another way to exploit this: You can turn your applications'
+      Web UI into its Web API - after all, API design is often driven by the
+      idea that everything that can be done via the UI should also be doable
+      via the API.
+    - Conflating the two tasks into one is an amazingly useful way to get a better
+      Web interface for both humans and other applications.
+    - In summary: Provide multiple representations of resources for different
+      needs.
+
+5: Communicate statelessly
+    - Statelessness communication
+    - Although REST includes the idea of Statelessness, this does not mean that
+      and application that exposes its functionality cannot have a state.
+    - REST mandates that state be either turned into resource state, or kept
+      on the client.
+    - In other words, a server should not have to retain some sort of
+      communication state for any of the clients it communicates with beyond
+      a single request.
+    - The most obvious reason for this is scalabitily - the number of clients
+      interacting would seriously impact the server's footprint if it had to
+      keep client state.
+    - Note that this usually requires some redesign - you can't simply stick a
+      URI to some session state and call it RESTful.
+    - The Statelessness constraint isolates the client against changes on the
+      server as it is not dependent on talk to the same server in two
+      consecutive requests.
+
+
+--> If all of this sounds quite abstract to you, you are right - REST in itself
+    is a high-level style that could be implemented using many different
+    technologies, and instantiated using different values for its abstract
+    properties.
+--> For example, REST includes the concepts of resources and a uniform
+    interface - i.e. the idea that every resource should respond to the same
+    methods. But REST doesn't say which methods these should be, or how
+    many of them there should be.
+--> One "incarnation" of the REST style is HTTP (and a set of related set of
+    standards, such as URIs), or slightly more abstractly: the Web's architecture
+    itself.
+--> To continue with the example, HTTP "instantiates" the REST uniform
+    interface with a particular one, consisting of the HTTP verbs.
